@@ -8,9 +8,10 @@ from blogpost.models import Post
 def homeView(request):
     template = 'index.html'
 
-    posts = Post.objects.select_related("subcategory").select_related("category").select_related("subcategory__category").prefetch_related('like')
+    posts = Post.objects.select_related("subcategory").select_related("category").select_related("subcategory__category").prefetch_related('like').prefetch_related('category__subcategory_set')
+    total = posts.count()
     context = {
-        
         'posts':posts,
+        'total':total,
     }
     return render(request, template, context) 

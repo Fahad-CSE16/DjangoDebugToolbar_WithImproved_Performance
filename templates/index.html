@@ -11,7 +11,8 @@
       <h1>{{item.details}}</h1>
       <h1>{{item.subcategory.name}}</h1>
       <h1>{{item.subcategory.category.name}}</h1>
-      <h1>{{item.category.name}}</h1>
+      <h1>{{item.category.subcategory_set.count}}</h1>
+      {{item.like.all.count}}
       {% for us in item.like.all %}
         <h5>{{us.username}}</h5>
       {% endfor %}
